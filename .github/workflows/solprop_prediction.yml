@@ -1,0 +1,56 @@
+name: SolProp ML Prediction
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_file:
+        description: 'Name of input CSV file in input/ folder'
+        required: true
+        default: 'input.csv'
+  push:
+    paths:
+      - 'input/**'
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: 3.8
+        
+    - name: Install SolProp_ML
+      shell: bash -l {0}
+      run: |
+        conda install -c fhvermei solprop_ml -y
+        pip install git+https://github.com/bp-kelley/descriptastorus
+        
+    - name: Run predictions
+      shell: bash -l {0}
+      run: |
+        python scripts/run_prediction.py
+        
+    - name: Upload results
+      uses: actions/upload-artifact@v3
+      with:
+        name: prediction-results
+        path: output/
+        
+    - name: Commit results to repository
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add output/
+        git diff --quiet && git diff --staged --quiet || git commit -m "Add prediction results [skip ci]"
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
