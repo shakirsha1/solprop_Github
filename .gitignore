@@ -23,6 +23,11 @@ build/
 .DS_Store
 Thumbs.db
 
+# SolProp_ML cloned repo (temporary)
+SolProp_ML/
+Machine_learning_models/
+models.zip
+
 # Keep output folder but ignore temporary files
 output/*.tmp
 
