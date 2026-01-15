@@ -44,8 +44,8 @@ jobs:
     - name: Download ML models
       shell: bash -l {0}
       run: |
-        # Download models using Dropbox direct download URL
-        curl -L -o models.zip "https://dl.dropboxusercontent.com/s/p6p39e2gfbdmuqj/Machine_learning_models.zip"
+        # Download models from Zenodo (official source)
+        curl -L -o models.zip "https://zenodo.org/records/5970538/files/Machine_learning_models.zip?download=1"
         
         # Verify the download is a valid zip file
         file models.zip
