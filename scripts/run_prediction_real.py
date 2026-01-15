@@ -37,7 +37,7 @@ def main():
     
     # Import SolProp_ML
     try:
-        from solvation_predictor import calculate_solubility, predict_property
+        from solvation_predictor.calculate_solubility import calculate_solubility, predict_property
         print("✓ SolProp_ML successfully imported")
     except ImportError as e:
         print(f"❌ ERROR: Failed to import SolProp_ML: {e}")
