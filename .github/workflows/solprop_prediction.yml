@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        lfs: true
       
     - name: Set up Conda
       uses: conda-incubator/setup-miniconda@v3
@@ -41,23 +42,18 @@ jobs:
         cd SolProp_ML
         pip install -e .
         
-    - name: Download ML models
+    - name: Extract and setup ML models
       shell: bash -l {0}
       run: |
-        # Download models from Zenodo (official source)
-        curl -L -o models.zip "https://zenodo.org/records/5970538/files/Machine_learning_models.zip?download=1"
+        # Extract the local SolProp model file
+        unzip SolProp_v1.2.zip
         
-        # Verify the download is a valid zip file
-        file models.zip
-        if ! file models.zip | grep -q "Zip archive"; then
-          echo "Error: Downloaded file is not a valid zip archive"
-          echo "File contents:"
-          head -n 20 models.zip
+        # Verify extraction was successful
+        if [ ! -d "Machine_learning_models" ]; then
+          echo "Error: Machine_learning_models directory not found after extraction"
+          ls -la
           exit 1
         fi
-        
-        # Extract the zip file
-        unzip models.zip
         
         # Copy models to the correct location
         mkdir -p SolProp_ML/solvation_predictor/trained_models/
