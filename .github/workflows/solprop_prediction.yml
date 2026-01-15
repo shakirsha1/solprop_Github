@@ -45,7 +45,7 @@ jobs:
       shell: bash -l {0}
       run: |
         # Download models from the provided link
-        wget -O models.zip "https://www.dropbox.com/s/p6p39e2gfbdmuqj/Machine_learning_models.zip?dl=1"
+        curl -L -o models.zip "https://www.dropbox.com/s/p6p39e2gfbdmuqj/Machine_learning_models.zip?dl=1"
         unzip models.zip
         
         # Copy models to the correct location
