@@ -6,6 +6,7 @@ Uses actual SolProp_ML package for solubility predictions
 
 import os
 import sys
+import pandas as pd
 from pathlib import Path
 from datetime import datetime
 
@@ -62,6 +63,9 @@ def main():
         log_file = output_dir / f"{base_name}_log_{timestamp}.log"
         
         try:
+            # Read input CSV
+            df = pd.read_csv(input_file)
+            
             # Run solubility calculations
             print("\n🔬 Running solubility calculations...")
             results = calculate_solubility(
@@ -78,7 +82,7 @@ def main():
             # Run property predictions
             print("\n🧪 Running property predictions...")
             predictions = predict_property(
-                path=str(input_file),
+                df=df,
                 gsolv=True,
                 hsolv=True,
                 saq=True,
