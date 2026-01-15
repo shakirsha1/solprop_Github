@@ -66,9 +66,6 @@ def main():
             print("\n🔬 Running solubility calculations...")
             results = calculate_solubility(
                 path=str(input_file),
-                validate_smiles=True,
-                calculate_aqueous=False,
-                reduced_number=False,
                 export_csv=str(results_file),
                 export_detailed_csv=str(detailed_file),
                 logger=str(log_file)
@@ -86,8 +83,6 @@ def main():
                 hsolv=True,
                 saq=True,
                 solute_parameters=True,
-                reduced_number=False,
-                validate_smiles=True,
                 export_csv=str(properties_file),
                 logger=str(log_file)
             )
