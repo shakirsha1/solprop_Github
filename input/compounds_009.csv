@@ -12,6 +12,6 @@ c1ccc(O)cc1,CCO,298.15
 c1ccccc1,O,350
 c1ccccc1,CCO,350
 c1ccccc1,CCO,323.15
-c1ccc(cc1),CCO,298.15
-c1ccc2ccc,CCCCCC,298.15
-Oc1ccccc1,CC(=O)C,298.15
+c1ccccc1,CCO,298.15
+c1ccc2ccccc2c1,CCCCCC,298.15
+c1ccc(O)cc1,CC(=O)C,298.15
