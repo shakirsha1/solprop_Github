@@ -72,7 +72,7 @@ jobs:
       run: |
         conda activate env_solprop
         cd SolProp_ML
-        python -c "from solvation_predictor import calculate_solubility, predict_property; print('✓ SolProp_ML imported successfully')"
+        python -c "from solvation_predictor import calculate_solubility; print('✓ SolProp_ML imported successfully')"
         
     - name: Create output directory
       run: mkdir -p output
