@@ -49,7 +49,7 @@ jobs:
         unzip SolProp_v1.2.zip
         
         # Verify extraction was successful
-        if [ ! -d "Machine_learning_models" ]; then
+        if [ ! -d "SolProp_v1.2/Machine_learning_models" ]; then
           echo "Error: Machine_learning_models directory not found after extraction"
           ls -la
           exit 1
@@ -57,9 +57,9 @@ jobs:
         
         # Copy models to the correct location
         mkdir -p SolProp_ML/solvation_predictor/trained_models/
-        cp -r Machine_learning_models/Gsolv SolProp_ML/solvation_predictor/trained_models/
-        cp -r Machine_learning_models/Hsolv SolProp_ML/solvation_predictor/trained_models/
-        cp -r Machine_learning_models/Saq SolProp_ML/solvation_predictor/trained_models/
+        cp -r SolProp_v1.2/Machine_learning_models/Gsolv SolProp_ML/solvation_predictor/trained_models/
+        cp -r SolProp_v1.2/Machine_learning_models/Hsolv SolProp_ML/solvation_predictor/trained_models/
+        cp -r SolProp_v1.2/Machine_learning_models/Saq SolProp_ML/solvation_predictor/trained_models/
         
         echo "Models installed successfully"
         ls -la SolProp_ML/solvation_predictor/trained_models/
