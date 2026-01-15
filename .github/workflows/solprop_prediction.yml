@@ -44,8 +44,19 @@ jobs:
     - name: Download ML models
       shell: bash -l {0}
       run: |
-        # Download models from the provided link
-        curl -L -o models.zip "https://www.dropbox.com/s/p6p39e2gfbdmuqj/Machine_learning_models.zip?dl=1"
+        # Download models using Dropbox direct download URL
+        curl -L -o models.zip "https://dl.dropboxusercontent.com/s/p6p39e2gfbdmuqj/Machine_learning_models.zip"
+        
+        # Verify the download is a valid zip file
+        file models.zip
+        if ! file models.zip | grep -q "Zip archive"; then
+          echo "Error: Downloaded file is not a valid zip archive"
+          echo "File contents:"
+          head -n 20 models.zip
+          exit 1
+        fi
+        
+        # Extract the zip file
         unzip models.zip
         
         # Copy models to the correct location
