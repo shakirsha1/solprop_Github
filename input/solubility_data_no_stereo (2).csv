@@ -1,4 +1,4 @@
-solvent_smiles,solute_smiles,temperature,,,
+solute,solvent,temperature,,,
 CC(=O)C,CC(C=C1)=CC2=C1C(C)(C)OC3=C2C(O)=CC(C(O)CCCC)=C3,273.15,,,
 CC(=O)C,CC(C=C1)=CC2=C1C(C)(C)OC3=C2C(O)=CC(C(O)CCCC)=C3,298.15,,,
 CC(=O)C,CC(C=C1)=CC2=C1C(C)(C)OC3=C2C(O)=CC(C(O)CCCC)=C3,323.15,,,
